@@ -5,6 +5,8 @@
 
 package com.espol.edu.taller1;
 
+import com.espol.edu.model.TravelPackage;
+
 /**
  *
  * @author johanjairgilcesreyes
@@ -12,6 +14,9 @@ package com.espol.edu.taller1;
 public class Taller1 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        double totalCost=TravelPackage.generateQuotePackage();
+        System.out.println("The total cost of your travel its: ");
+        System.out.println(totalCost);
     }
 }
+    
