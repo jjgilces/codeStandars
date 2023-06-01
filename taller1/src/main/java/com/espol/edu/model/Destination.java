@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.espol.edu.model;
 
 /**
@@ -9,7 +5,8 @@ package com.espol.edu.model;
  * @author johanjairgilcesreyes
  */
 public class Destination {
-    private String name;
+	//variables of instance 
+    private String name;// name of the destination
     private double cost;
 
     public Destination(String name) {
