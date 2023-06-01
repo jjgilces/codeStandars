@@ -36,7 +36,7 @@ public class Package {
         }
         if(duration<7) totalCost+=200;
         if(duration>30 && qTraveleres==2)totalCost-=200;
-        
+        return totalCost;
 
     }
 }
