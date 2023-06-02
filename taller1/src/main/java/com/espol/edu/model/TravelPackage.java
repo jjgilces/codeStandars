@@ -50,7 +50,9 @@ public final class TravelPackage {
      * Full message to generate a Package.
      */
     private static String finalMessage = message1 + message2;
-
+    /**
+     * TravelPackage constructor.
+     */
     private TravelPackage(final Destination d,final int numDays,final int numTraveles){
     	destination = d;
     	numberOfTravelers = numTraveles;
