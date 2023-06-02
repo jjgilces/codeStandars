@@ -14,19 +14,17 @@
 		<module name="JavadocType">
 			<property name="authorFormat" value="\S" />
 		</module>
-		<module name="ConstantName">
-			<property name="format" value="^log(ger)?$|^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$" />
+		 <module name="UnnecessarySemicolonAfterOuterTypeDeclaration"/>
+		<module name="HiddenField" >
+		    <property name="ignoreSetter" value="true" />
+		    <property name="ignoreConstructorParameter" value="true" />
 		</module>
-	
 		<module name="JavadocMethod">
 			<property name="accessModifiers" value="public" />
 			<property name="allowMissingParamTags" value="true" />
 		</module>
 		<module name="JavadocVariable" />
-		<module name="ParameterNumber">
-			<property name="max" value="3" />
-			<property name="tokens" value="METHOD_DEF" />
-		</module>
+		<module name="NoWhitespaceAfter"/>
 		<module name="RequireThis">
 			<property name="checkMethods" value="false" />
 
