@@ -1,62 +1,104 @@
+// Package declaration
 package com.espol.edu.model;
 
 /**
- *
+ * The Destination class represents a travel destination.
+ * 
  * @author johanjairgilcesreyes
  */
 public class Destination {
-/**
-* Attribute of name.
-*/
-    private String name;
-    /**
-     * Attribute of cost.
+	/**
+     * Constructor for the Destination class.
+     * 
+     * @param PARIS The name of the destination.
      */
-    private double cost;
+	    private static final String PARIS = "Paris";
+	    /**
+	     * Constructor for the Destination class.
+	     * 
+	     * @param NEW_YORK_CITY The name of the destination.
+	     */
+	    private static final String NEW_YORK_CITY = "New York City";
+	    /**
+	     * Constructor for the Destination class.
+	     * 
+	     * @param name The name of the destination.
+	     */
+	    
+	    private String name;
+	    /**
+	     * Constructor for the Destination class.
+	     * 
+	     * @param cost The name of the destination.
+	     */
+	    private int cost;
+
+	    /**
+	    
+	     * 
+	     * @function Destination
+	     */
+	    public Destination(String name) {
+	        this.name = name;
+
+	        // Check if the name is "Paris"
+	        if (PARIS.equals(name)) {
+	            cost = 500; // Set the cost to 500
+	        }
+	        // Check if the name is "New York City"
+	        else if (NEW_YORK_CITY.equals(name)) {
+	            cost = 600; // Set the cost to 600
+	        }
+	        // For other names, set the cost to 0
+	        else {
+	            cost = 0; // Set the cost to 0
+	        }
+	    }
+
+	    /**
+	     * Get the name of the destination.
+	     * 
+	     * @return The name of the destination.
+	     */
+	    public String getName() {
+	        return name;
+	    }
+
+	    /**
+	     * Set the name of the destination.
+	     * 
+	     * @param name The name of the destination.
+	     */
+	    public void setName(final String name) {
+	        this.name = name;
+	    }
+
+	    /**
+	     * Get the cost of the destination.
+	     * 
+	     * @return The cost of the destination.
+	     */
+	    public int getCost() {
+	        return cost;
+	    }
+    
     /**
-     * Constructor of Destination.
-     */
-    public Destination(String name) {
-        this.name = name;
-        if (name.equals("Paris")) {
-        	cost=500;
-        	}
-        else if(name.equals("New York City")) cost=600;
-        cost = 0;
-    }
-    /**
-     * @return
-     * Method to get the Name.
-     */
-    public String getName() {
-        return name;
-    }
-    /**
-     * @param name
-     * Method to set the Name.
-     */
-    public void setName(final String name){
-        this.name = name;
-    }
-    /**
-     * @return
-     * Method to get the Cost.
-     */
-    public double getCost() {
-        return cost;
-    }
-    /**
-     * @param cost
-     * Method to get the Cost.
+     * Set the cost of the destination.
+     * 
+     * @param cost The cost of the destination.
      */
     public void setCost(final double cost) {
         this.cost = cost;
     }
+    
     /**
-     * @return boolean
-     * Method to determine if it is a popular destination.
+     * Check if the destination is popular.
+     * A destination is considered popular if its name is "Paris" or "New York City".
+     * 
+     * @return True if the destination is popular, false otherwise.
      */
-    public boolean itsPopular() {
-        return name.equals("Paris") || name.equals("New York City");
+    public boolean isPopular() {
+        return "Paris".equals(name) || "New York City".equals(name);
     }
+    
 }

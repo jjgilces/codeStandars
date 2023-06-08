@@ -1,0 +1,1 @@
+src/main/java/com/espol/edu/model/Destination.java:42:	ConstructorCallsOverridableMethod:	ConstructorCallsOverridableMethod: Overridable method called during object construction: Destination.setName(String) 

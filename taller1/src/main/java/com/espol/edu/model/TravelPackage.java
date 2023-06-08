@@ -14,35 +14,35 @@ public final class TravelPackage {
     /**
     * A variable is declared to receive data by console.
     */
-    private static Scanner sc = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
     /**
     * Destination type attribute is declared.
     */
 
-    private Destination destination;
+    public Destination destination;
     /**
     * Attribute is declared to define the number of Travelers.
     */
 
-    private int numberOfTravelers;
+    public  int numberOfTravelers;
     /**
      * Attribute is declared to define vacation package..
      */
 
-     private int packageVacation;
+     public int packageVacation;
     /**
     * Attribute is declared to define the travel duration.
     */
 
-    private int duration;
+    public  int duration;
     /**
     * Attribute is declared to define the total cost.
     */
-    private double totalCost;
+    public double totalCost;
     /**
      * Attribute is declared to define the duration of 7 days.
      */
-    private int maxDuration = 7;
+    public int maxDuration = 7;
     /**
      * Part one of message to generate a Package.
      */
@@ -58,46 +58,50 @@ public final class TravelPackage {
     /**
      * TravelPackage constructor.
      */
-    private TravelPackage(final Destination d,final int numDays,final int numTraveles, int packageOption){
-    	destination = d;
-    	numberOfTravelers = numTraveles;
-    	
-    	if (numDays > 80){
-    		throw new IllegalArgumentException();
-    	}
-    	duration =  numDays;
-    	totalCost += baseCost;
-    	packageVacation = packageOption;
+    private TravelPackage(final Destination destinationValue, final int numTravelDays, final int numTraveles, final int packageOption) {
+        destination = destinationValue;
+        numberOfTravelers = numTraveles;
+        final int maxNumDay = 80;
+        if (numTravelDays > maxNumDay) {
+            throw new IllegalArgumentException();
+        }
+        duration = numTravelDays;
+        totalCost += baseCost;
+        packageVacation = packageOption;
     }
     /**
      * @return double
      * Method to get the total cost.
      */
     public double getTotalCost() {
-        totalCost += destination.getCost();
-
-        if (numberOfTravelers > 4 && numberOfTravelers < 10) {
-            totalCost = totalCost * 0.9;
-        } else if (numberOfTravelers >= 10) {
-            totalCost = totalCost * 0.8;
+        double cost = baseCost + destination.getCost();
+        final int minimumTravelers = 4;
+        final int maximumTravelers = 10;
+        final double discount1 = 0.9;
+        final double discount2 = 0.8;
+        final int maxDuration = 7;
+        final double extraCost = 200;
+        final double discount3 = 200;
+        
+        if (numberOfTravelers > minimumTravelers && numberOfTravelers < maximumTravelers) {
+            cost = cost * discount1;
+        } else if (numberOfTravelers >= minimumTravelers) {
+            cost = cost * discount2;
         }
+        
         if (duration < maxDuration) {
-        	totalCost += 200;
-        	}
-        if(duration > 30 && numberOfTravelers == 2) {
-        	totalCost -= 200;
+            cost += extraCost;
         }
-        // Add the cost of optional add-ons
-        if (packageVacation == 1) { // All-Inclusive Package
-            totalCost += numberOfTravelers * 200;
-        } else if (packageVacation == 2) { // Adventure Activities Package
-            totalCost += numberOfTravelers * 150;
-        } else if (packageVacation == 3) { // Spa and Wellness Package
-            totalCost += numberOfTravelers * 100;
+        
+        if (duration > 30 && numberOfTravelers == 2) {
+            cost -= discount3;
         }
-        return totalCost;
-
+        
+        return cost;
     }
+    
+  
+
     /**
      * @return double
      * Method to generate a qoute package.
@@ -106,28 +110,28 @@ public final class TravelPackage {
     	System.out.println("Welcome to ECUDREAMS:");
     	System.out.println(finalMessage);
     	System.out.println("Enter your destination:");
-    	String destination = sc.nextLine();
-    	Destination  destin = new Destination(destination);
+    	final String destination = scanner.nextLine();
+    	final Destination  destin = new Destination(destination);
     	System.out.println("Enter the number of the days:");
-    	int numOfDays = sc.nextInt();
-    	sc.nextLine();
+    	final int numOfDays = scanner.nextInt();
+    	scanner.nextLine();
     	System.out.println("Enter the number of the travelers:");
-    	int numOfTravelers = sc.nextInt();
-    	sc.nextLine();
+    	final int numOfTravelers = scanner.nextInt();
+    	scanner.nextLine();
     	System.out.println("Enter the vacation package ");
     	System.out.println("1. All-Inclusive Package - $200 per traveler");
     	System.out.println("2. Adventure Activities Package - $150 per traveler");
     	System.out.println("3. Spa and Wellness Package - $100 per traveler");
-    	int packageOption = sc.nextInt();
-    	sc.nextLine();
-        try {
-            TravelPackage quote = new TravelPackage(destin, numOfDays, numOfTravelers,packageOption);
-            return quote.getTotalCost();
+    	final int packageOption = scanner.nextInt();
+    	scanner.nextLine();
+    	double totalCostTravel = 0;
+    	try {
+            final TravelPackage quote = new TravelPackage(destin, numOfDays, numOfTravelers, packageOption);
+            totalCostTravel = quote.getTotalCost();
         } catch (IllegalArgumentException ex) {
             System.err.println("We could not create your package of vacations");
-            return -1;
         }
-
+    	return totalCostTravel;
 
     }
 }
